@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "f01386a4-df8f-44f1-9afe-01a4f2d52954",
+		"name": "Nasa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26555180"
+	},
+	"item": [
+		{
+			"name": "Requests Mars",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/rovers/curiosity/photos?sol=1000&camera=FHAZ",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"rovers",
+						"curiosity",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "sol",
+							"value": "1000"
+						},
+						{
+							"key": "camera",
+							"value": "FHAZ"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requests Earth date curiosity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonBody = pm.response.json()\r",
+							"console.log(jsonBody)\r",
+							"\r",
+							"var secondIdphotoCUR = jsonBody.photos[1].id\r",
+							"sixphoto = jsonBody.photos[6].camera.id\r",
+							"console.log(secondIdphotoCUR)\r",
+							"console.log(sixphoto)\r",
+							"\r",
+							"pm.test(\"Correct ID\", function () {\r",
+							"    pm.expect(jsonBody.photos[6].camera.id).to.eql(20);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"secondIdphotoCUR\", secondIdphotoCUR);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/rovers/curiosity/photos?earth_date=2021-1-21&page=2",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"rovers",
+						"curiosity",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "earth_date",
+							"value": "2021-1-21"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requests Earth date opportunity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonBody = pm.response.json();\r",
+							"console.log(jsonBody)\r",
+							"\r",
+							"secondIdOpp = jsonBody.photos[1].id\r",
+							"console.log(secondIdOpp)\r",
+							"\r",
+							"pm.test(\"Correct PhotoId\", function () {\r",
+							"        pm.expect(secondIdOpp).to.eql(110822);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct PhotoId again\", function () {\r",
+							"        pm.expect(jsonBody.photos[1].id).to.eql(110822);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"id\": 788948,\r\n            \"sol\": 3008,\r\n            \"camera\": {\r\n                \"id\": 20,\r\n                \"name\": \"FHAZ\",\r\n                \"rover_id\": 5,\r\n                \"full_name\": \"Front Hazard Avoidance Camera\"\r\n            },\r\n            \"img_src\": \"https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03008/opgs/edr/fcam/FRB_664532830EDR_F0851072FHAZ00302M_.JPG\",\r\n            \"earth_date\": \"2021-01-21\",\r\n            \"rover\": {\r\n                \"id\": 5,\r\n                \"name\": \"Curiosity\",\r\n                \"landing_date\": \"2012-08-06\",\r\n                \"launch_date\": \"2011-11-26\",\r\n                \"status\": \"active\",\r\n                \"max_sol\": 4074,\r\n                \"max_date\": \"2024-01-21\",\r\n                \"total_photos\": 694987,\r\n                \"cameras\": [\r\n                    {\r\n                        \"name\": \"FHAZ\",\r\n                        \"full_name\": \"Front Hazard Avoidance Camera\"\r\n                    },\r\n                    {\r\n                        \"name\": \"NAVCAM\",\r\n                        \"full_name\": \"Navigation Camera\"\r\n                    },\r\n                    {\r\n                        \"name\": \"MAST\",\r\n                        \"full_name\": \"Mast Camera\"\r\n                    },\r\n                    {\r\n                        \"name\": \"CHEMCAM\",\r\n                        \"full_name\": \"Chemistry and Camera Complex\"\r\n                    },\r\n                    {\r\n                        \"name\": \"MAHLI\",\r\n                        \"full_name\": \"Mars Hand Lens Imager\"\r\n                    },\r\n                    {\r\n                        \"name\": \"MARDI\",\r\n                        \"full_name\": \"Mars Descent Imager\"\r\n                    },\r\n                    {\r\n                        \"name\": \"RHAZ\",\r\n                        \"full_name\": \"Rear Hazard Avoidance Camera\"\r\n                    }\r\n                ]\r\n            }\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/rovers/Opportunity/photos?earth_date=2021-1-21&page=1",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"rovers",
+						"Opportunity",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "earth_date",
+							"value": "2021-1-21"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requests Earth date spirit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonBody = pm.response.json();\r",
+							"console.log(jsonBody)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/rovers/Spirit/photos?earth_date=2021-1-21&page=1",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"rovers",
+						"Spirit",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "earth_date",
+							"value": "2021-1-21"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "api_key",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "I6vfBjUrOZLEIKPI3eYmKXT072mryMRpbgedExzd",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

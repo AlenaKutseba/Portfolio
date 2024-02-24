@@ -1,0 +1,11 @@
+The test assignment is performed at NASA open api site - https://api.nasa.gov/. 
+The task is performed in Postman 
+Task: 
+ 
+Mars Rover Photos queries need to be found 
+Execute a Querying by Earth date for the date 21.01.2022 
+Pass the id of the second photo into the environment variable by parse json 
+Send the answer to the task in the following form: 
+ 
+URL of the resulting query 
+The js code to pass the variable
