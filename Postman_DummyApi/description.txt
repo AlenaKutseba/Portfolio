@@ -1,0 +1,15 @@
+Base URL
+https://dummyapi.io/data/v1/
+Headers
+It is required to set app-id Header for each request.
+It helps us to determine your personal environment. So only you can access data that were created or update.
+
+You can get personal App ID value on your account page.
+You can have as much App ID as you want and use it in parallel(for different projects, envs etc).
+
+Task:
+Create a collection of requests in Postman that includes:
+- Retrieving a list of users;
+- Creating a user;
+- Updating a user;
+- Deleting a user.
