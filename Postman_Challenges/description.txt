@@ -1,7 +1,55 @@
-To view your challenges status in multi-user mode, make sure you have registered as a challenger using a `POST` request to `/challenger` and are including an `X-CHALLENGER` header in all your requests.
+Registere as a challenger using a `POST` request to `/challenger` and are including an `X-CHALLENGER` header in all your requests.
 
-Then view the challenges in the GUI by visiting `/gui/challenges/{GUID}`, where `{GUID}` is the value in the `X-CHALLENGER` header.
+View the challenges in the GUI by visiting `/gui/challenges/{GUID}`, where `{GUID}` is the value in the `X-CHALLENGER` header.
 
-Challenger sessions are purged from the server memory after 10 minutes of inactivity. To restore your session progress issue an API request with the X-CHALLENGER header (note this will restore the completion state of challenges, but not the data you were using)
 
-Task:
+Tasks:
+Issue a POST request on the `/challenger` end point, with no body, to create a new challenger session. Use the generated X-CHALLENGER header in future requests to track challenge completion.
+Issue a GET request on the `/challenges` end point
+Issue a GET request on the `/todos` end point
+Issue a GET request on the `/todo` end point should 404 because nouns should be plural
+Issue a GET request on the `/todos/{id}` end point to return a specific todo
+Issue a GET request on the `/todos/{id}` end point for a todo that does not exist
+Issue a HEAD request on the `/todos` end point
+Issue a POST request to successfully create a todo
+Issue a GET request on the `/todos` end point with a query filter to get only todos which are 'done'. There must exist both 'done' and 'not done' todos, to pass this challenge.
+Issue a POST request to create a todo but fail validation on the `doneStatus` field
+Issue a POST request to create a todo but fail length validation on the `title` field because your title exceeds maximum allowable characters.
+Issue a POST request to create a todo but fail length validation on the `description` because your description exceeds maximum allowable characters.
+Issue a POST request to create a todo with maximum length title and description fields.
+Issue a POST request to create a todo but fail payload length validation on the `description` because your whole payload exceeds maximum allowable 5000 characters.
+Issue a POST request to create a todo but fail validation because your payload contains an unrecognised field.
+Issue a POST request to successfully update a todo
+Issue a DELETE request to successfully delete a todo
+Issue an OPTIONS request on the `/todos` end point. You might want to manually check the 'Allow' header in the response is as expected.
+Issue a GET request on the `/todos` end point with an `Accept` header of `application/xml` to receive results in XML format
+Issue a GET request on the `/todos` end point with an `Accept` header of `application/json` to receive results in JSON format
+Issue a GET request on the `/todos` end point with an `Accept` header of `*/*` to receive results in default JSON format
+Issue a GET request on the `/todos` end point with an `Accept` header of `application/xml, application/json` to receive results in the preferred XML format
+Issue a GET request on the `/todos` end point with no `Accept` header present in the message to receive results in default JSON format
+Issue a GET request on the `/todos` end point with an `Accept` header `application/gzip` to receive 406 'NOT ACCEPTABLE' status code
+Issue a POST request on the `/todos` end point to create a todo using Content-Type `application/xml`, and Accepting only XML ie. Accept header of `application/xml`
+Issue a POST request on the `/todos` end point to create a todo using Content-Type `application/json`, and Accepting only JSON ie. Accept header of `application/json`
+Issue a POST request on the `/todos` end point with an unsupported content type to generate a 415 status code
+Issue a GET request on the `/challenger` end point, with an existing challenger GUID to restore that challenger's progress into memory.
+Issue a POST request on the `/challenger` end point, with an existing challenger GUID as the X-CHALLENGER header to restore that challenger's progress into memory.
+Issue a POST request on the `/todos` end point to create a todo using Content-Type `application/xml` but Accept `application/json`
+Issue a POST request on the `/todos` end point to create a todo using Content-Type `application/json` but Accept `application/xml`
+Issue a DELETE request on the `/heartbeat` end point and receive 405 (Method Not Allowed)
+Issue a PATCH request on the `/heartbeat` end point and receive 500 (internal server error)
+Issue a TRACE request on the `/heartbeat` end point and receive 501 (Not Implemented)
+Issue a GET request on the `/heartbeat` end point and receive 204 when server is running
+Issue a POST request on the `/secret/token` end point and receive 401 when Basic auth username/password is not admin/password
+Issue a POST request on the `/secret/token` end point and receive 201 when Basic auth username/password is admin/password
+Issue a GET request on the `/secret/note` end point and receive 403 when X-AUTH-TOKEN does not match a valid token
+Issue a GET request on the `/secret/note` end point and receive 401 when no X-AUTH-TOKEN header present
+Issue a GET request on the `/secret/note` end point receive 200 when valid X-AUTH-TOKEN used - response body should contain the note
+Issue a POST request on the `/secret/note` end point with a note payload e.g. {"note":"my note"} and receive 200 when valid X-AUTH-TOKEN used. Note is maximum length 100 chars and will be truncated when stored.
+Issue a POST request on the `/secret/note` end point with a note payload {"note":"my note"} and receive 401 when no X-AUTH-TOKEN present
+Issue a POST request on the `/secret/note` end point with a note payload {"note":"my note"} and receive 403 when X-AUTH-TOKEN does not match a valid tokenIssue a GET request on the `/secret/note` end point receive 200 when using the X-AUTH-TOKEN value as an Authorization Bearer token - response body should contain the note
+Issue a POST request on the `/secret/note` end point with a note payload e.g. {"note":"my note"} and receive 200 when valid X-AUTH-TOKEN value used as an Authorization Bearer token. Status code 200 received. Note is maximum length 100 chars and will be truncated when stored.
+Issue a DELETE request to successfully delete the last todo in system so that there are no more todos in the system
+Issue as many POST requests as it takes to add the maximum number of TODOS allowed for a user. The maximum number should be listed in the documentation.
+
+
+

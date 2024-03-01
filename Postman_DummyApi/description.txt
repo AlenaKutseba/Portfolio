@@ -9,7 +9,21 @@ You can have as much App ID as you want and use it in parallel(for different pro
 
 Task:
 Create a collection of requests in Postman that includes:
-- Retrieving a list of users;
-- Creating a user;
-- Updating a user;
-- Deleting a user.
+- Get List of users without autorization;
+- Get list of users;
+- Create User;
+- Update User;
+- Check user's update;
+- Paging;
+- Create post;
+- Check post creating by post ID;
+- Check post creating by user ID;
+- Check post creating in list;
+- Create comment;
+- Check comment creating by post ID;
+- Check comment creating by user ID;
+- Delete last comment;
+- Check last comment after deleting;
+- Delet user;
+- Check user after delete.
+  
