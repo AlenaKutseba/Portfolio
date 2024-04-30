@@ -1,0 +1,21 @@
+Task is:
+Create a collection in Postman with queries for full testing of the method described below.
+
+The URL in the method must be specified as a global variable (the candidate does not have access to the resource).
+
+The authorization token in the method must be specified as global variables 
+(you do not have access to authorization data).
+
+Requests should be made in such a way that the verifier can run them by specifying only the URL and the Token in global variables.
+
+If a question arises that is not covered by the Documentation described below, 
+you must choose any solution that does not contradict the statement.
+
+
+
+Documentation
+
+System description: enterprise project management system
+The POST method allows you to create a new project in the system
+Address: /api/projects
+Authorization: required
