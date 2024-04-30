@@ -1,0 +1,22 @@
+Base URL
+https://partner.agentapp.ru/v1/
+
+Host: https://partner.agentapp.ru/
+Login: qa@qa.qa
+Password: 111
+api_version: v1
+
+Task:
+Create and send a Postman collection (.json) and the environment (postman_environment.json) based on the described 
+documentation. Some of the query examples were deliberately hidden so that you could create 
+a query yourself by analogy with previous examples.
+
+AUTHENTICATION
+Creat a driver
+Creat an owner	
+Creat a policyholder	
+Creat a car	
+Consolidation of subjects and objects of insurance into one entity “object of insurance”	
+Creat a contract	
+Update the Contract in the Agent App system	
+Getting a full calculation of the UK
